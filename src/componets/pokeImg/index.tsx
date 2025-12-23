@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { BarLoader, BeatLoader } from 'react-spinners';
-import { BtnArt, ContainerBackground, PokeArt } from './styled'
+import { BarLoader } from 'react-spinners';
+import { BarraDeBotoes, BtnArt, BtnComando, ContainerBackground, ImageContainer, MainContainer, PokeArt } from './styled'
 import { api } from "../../services/Api"
 import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from "react-icons/io";
 
@@ -8,6 +8,8 @@ import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from "react-icons/i
 interface PokeImgProps {
     pokemonId: number;
     pokemonName: string;
+    onNextPokemon: () => void;
+    onPrevPokemon: () => void;
 }
 
 interface PokemonApiResponse {
@@ -17,7 +19,7 @@ interface PokemonApiResponse {
     }
 }
 
-const PokeImg = ({ pokemonId, pokemonName }: PokeImgProps) => {
+const PokeImg = ({ pokemonId, pokemonName, onNextPokemon, onPrevPokemon }: PokeImgProps) => {
     const [isFront, setIsFront] = useState(true);
     const [frontImg, setFrontImg] = useState("");
     const [backImg, setBackImg] = useState("");
@@ -36,7 +38,7 @@ const PokeImg = ({ pokemonId, pokemonName }: PokeImgProps) => {
 
                 setTimeout(() => {
                     setLoading(false)
-                }, 2000);
+                }, 1000);
             } catch (error) {
                 console.error("Error ao bucar Pokemon:", error);
                 setLoading(false);
@@ -50,23 +52,29 @@ const PokeImg = ({ pokemonId, pokemonName }: PokeImgProps) => {
     }
 
     return (
-        <>
+        <MainContainer>
             <ContainerBackground>
                 <BtnArt onClick={handleChangeImage}>
                     <IoMdArrowDropleftCircle />
-                    </BtnArt>
-                {loading ? (
-                    <BarLoader color="#36d7b7"  />
-                ) : (
-                    <PokeArt src={isFront ? frontImg : backImg}
-                        isFront={isFront}
-                        alt={`Imagem do ${pokemonName}`} />
-                )}
+                </BtnArt>
+                <ImageContainer>
+                    {loading ? (
+                        <BarLoader color="#36d7b7" />
+                    ) : (
+                        <PokeArt src={isFront ? frontImg : backImg}
+                            isFront={isFront}
+                            alt={`Imagem do ${pokemonName}`} />
+                    )}
+                </ImageContainer>
                 <BtnArt onClick={handleChangeImage}>
                     <IoMdArrowDroprightCircle />
                 </BtnArt>
             </ContainerBackground>
-        </>
+            <BarraDeBotoes>
+                <BtnComando onClick={onPrevPokemon} disabled={pokemonId <= 1}>Anterior</BtnComando>
+                <BtnComando onClick={onNextPokemon}>Proximo</BtnComando>
+            </BarraDeBotoes>
+        </MainContainer>
     )
 }
 

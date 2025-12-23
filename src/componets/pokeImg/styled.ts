@@ -13,10 +13,17 @@ export const ContainerBackground = styled.div`
   align-items: center;
   gap: 20px;
 `
-
-export const PokeArt = styled.img<{isFront: boolean}>`
+export const ImageContainer = styled.div`  // 👈 NOVO
   width: 170px;
   height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+`
+export const PokeArt = styled.img<{isFront: boolean}>`
+  width: 100%;
+  height: 100%;
   flex-shrink: 0;
   transition: transform 0.5s ease-in-out;
   transform: ${props => (props.isFront ? 'rotateY(0deg)' : 'rotateY(180deg)')};
@@ -28,4 +35,27 @@ export const BtnArt = styled.button`
   cursor: pointer;
   font-size: 2.5rem;
   flex-shrink: 0;
+`
+export const BarraDeBotoes = styled.div`
+  display: flex;
+  width: 270px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  `
+
+  export const BtnComando = styled.button`
+  padding: 8px 16px;
+  border: solid 2px rgba(226, 26, 26, 1);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: beige;
+  `
+
+  export const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;  // 👈 Um embaixo do outro
+  align-items: center;
+  gap: 20px;  // Espaço entre eles
 `
