@@ -8,15 +8,19 @@ interface ItemListProps {
 
 const IntemList = ({ name, url, onSelect }: ItemListProps) => {
 
+    const id = url.split('/').filter(Boolean).pop()
 
     const handleClick = () => {
-        const id = url.split('/').filter(Boolean).pop()
         onSelect(Number(id));
     };
+
+    const formataNumero = (id: number) => {
+        return id.toString().padStart(3, '0');
+    }
     return (
         <ListaItem
             onClick={handleClick}>
-            {name}
+            {formataNumero(Number(id))}-{name}
         </ListaItem >
     )
 }

@@ -7,6 +7,7 @@ import IntemList from '../ItemList';
 interface Pokemon {
     name: string;
     url: string;
+    id: number;
 }
 
 const PokeLista = ({ onSelectPokemon }: { onSelectPokemon: (id: number) => void }) => {
@@ -49,6 +50,7 @@ const PokeLista = ({ onSelectPokemon }: { onSelectPokemon: (id: number) => void 
                             onSelect={handleSelectPokemon}
                             url={poke.url}
                             name={poke.name}
+                            id={poke.id}
                         >
                         </IntemList>
                     ))}
