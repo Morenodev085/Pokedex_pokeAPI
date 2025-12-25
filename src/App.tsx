@@ -3,6 +3,7 @@ import PokedexCorpo from "./componets/corpoPokedex"
 import PokeImg from "./componets/pokeImg"
 import PokeLista from "./componets/PokeLista"
 import { ContainerCentralizer } from "./GlobalStyled"
+import PokeInfo from "./componets/infoPoke";
 
 
 function App() {
@@ -24,6 +25,7 @@ const handlePrevPokemon = () => {
           onPrevPokemon={handlePrevPokemon}
           pokemonName={""}
           pokemonId={pokemonId} />
+          <PokeInfo pokemonId={pokemonId}/>
           <PokeLista onSelectPokemon={setPokemonId} />
       </ContainerCentralizer>
       </>

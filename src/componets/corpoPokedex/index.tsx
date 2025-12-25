@@ -1,12 +1,16 @@
+import { Menu, NavBar, Titulo } from "./styled"
+
 const PokedexCorpo = () => {
     return (
-        <>
-        <h1>Nacional Dex</h1>
-            <ul>
-                <li>inicio</li>
-
-            </ul>
-        </>
+        <NavBar>
+            <Titulo>Nacional Dex</Titulo>
+            <Menu>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Regioes</a></li>
+                </ul>
+            </Menu>
+        </NavBar>
     )
 }
 
