@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerLista = styled.div`
-    height: 500px;
+    height: 700px;
     width: 550px;
     background-color: #ffff;
     text-align: center;
@@ -16,7 +16,7 @@ export const ContainerLista = styled.div`
 
 export const ListaPokemon = styled.ul`
     overflow-y: auto;
-    height: 400px;
+    height: 625px;
     padding: 0;
 
     @media (max-width: 768px) {

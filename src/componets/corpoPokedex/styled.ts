@@ -11,11 +11,18 @@ export const NavBar = styled.div`
     border-bottom-left-radius: 15px ;
     border-bottom-right-radius: 15px ;
     border-top-right-radius: 15px ;
-`
+
+    `
 
 export const Titulo = styled.h1`
     color: white;
     margin-left: 20px;
+    font-weight: bold;
+    font-size: 24px;
+    
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
     `;
 
 export const Menu = styled.div`
